@@ -15,6 +15,7 @@ This project is an AI-powered application that enables users to:
   - Generate embeddings using a SentenceTransformers model.
   - Store embeddings in PostgreSQL for fast vector retrieval.
   - Perform document retrieval using PgVector.
+  - Answer the questions from Llama3.2 model
 - **Frontend (Streamlit UI)**
   - Upload PDF documents.
   - Query the system with questions.
@@ -26,12 +27,14 @@ This project is an AI-powered application that enables users to:
 - **Backend:** PostgreSQL with PgVector extension
 - **ML/NLP:** LangChain, Hugging Face SentenceTransformers
 - **Vector Storage:** PostgreSQL with PgVector
+- **LLM** Llama3.2
 
 ## Installation & Setup
 
 ### Prerequisites
 - Install Python (>=3.8)
 - Install PostgreSQL and ensure the PgVector extension is enabled.
+- Install and use Llamaa3.2 from Ollama module
 
 ### Step 1: Clone the Repository
 ```sh
@@ -55,7 +58,12 @@ Ensure your PostgreSQL database is running and execute:
 python -c 'from db_connector import create_table_if_not_exists; create_table_if_not_exists()'
 ```
 
-### Step 4: Run the Application
+### Step 4: Run the ollama script
+```sh
+ollama run llama3.2
+```
+
+### Step 5: Run the Application
 ```sh
 streamlit run app.py
 ```
@@ -108,5 +116,6 @@ Extracts text from PDFs using `PyMuPDFLoader`.
 - **Support for Multiple LLMs:** Extend to support OpenAI, Gemini, or other LLMs.
 - **Enhanced Retrieval Methods:** Implement hybrid search combining keyword and vector search.
 - **Caching Mechanism:** Improve query performance with caching layers.
+- **Better retrieval techniques** Model currently fails to answer many questions since some questions needs better vector representation of data. 
 
 
